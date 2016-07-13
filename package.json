@@ -4,9 +4,11 @@
   "description": "A project seed using React, Webpack, Babel + ES2015 and scss",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/ava",
+    "test-watch": "./node_modules/.bin/ava --watch",
+    "test-xml": "./node_modules/.bin/ava --tap | ./node_modules/.bin/tap-xunit",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.prod.config.js --optimize-minimize --optimize-dedupe",
-    "start": "./node_modules/.bin/webpack-dev-server --quiet --hot --inline"
+    "start": "NODE_ENV=development ./node_modules/.bin/webpack-dev-server --quiet --hot --inline"
   },
   "keywords": [
     "react",
@@ -20,12 +22,15 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
+    "ava": "~0.15.2",
     "babel-core": "~6.10.4",
     "babel-loader": "~6.2.4",
     "babel-preset-es2015": "~6.9.0",
     "babel-preset-react": "~6.11.1",
     "file-loader": "~0.9.0",
+    "react-addons-test-utils": "~15.2.1",
     "react-hot-loader": "~1.3.0",
+    "tap-xunit": "~1.4.0",
     "webpack": "~1.13.1",
     "webpack-dev-server": "~1.14.1"
   },
