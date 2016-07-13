@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./node_modules/.bin/webpack",
+    "build": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.prod.config.js --optimize-minimize --optimize-dedupe",
     "start": "./node_modules/.bin/webpack-dev-server --quiet --hot --inline"
   },
   "keywords": [
@@ -16,7 +16,7 @@
     "es6",
     "es2015"
   ],
-  "author": "Catalyst",
+  "author": "Jen Z",
   "license": "MIT",
   "private": true,
   "devDependencies": {
@@ -25,12 +25,12 @@
     "babel-preset-es2015": "~6.9.0",
     "babel-preset-react": "~6.11.1",
     "file-loader": "~0.9.0",
-    "react-dom": "~15.2.1",
     "react-hot-loader": "~1.3.0",
     "webpack": "~1.13.1",
     "webpack-dev-server": "~1.14.1"
   },
   "dependencies": {
-    "react": "~15.2.1"
+    "react": "~15.2.1",
+    "react-dom": "~15.2.1"
   }
 }

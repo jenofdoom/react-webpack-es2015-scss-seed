@@ -6,8 +6,8 @@ module.exports = {
     },
 
     output: {
-        filename: "app.js",
-        path: __dirname + "/dist",
+        filename: "app.js" 
+        // don't need a path because this config only used by devserver
     },
 
     module: {
