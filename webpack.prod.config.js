@@ -1,41 +1,43 @@
-const webpack = require("webpack")
+const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
-    context: __dirname + "/src",
-    entry: {
-        javascript: "./index.js",
-        html: "./index.html"
-    },
+  context: path.join(__dirname, './src'),
 
-    devtool: "cheap-module-source-map",
+  entry: {
+    javascript: './index.js',
+    html: './index.html'
+  },
 
-    output: {
-        filename: "app.js",
-        path: __dirname + "/dist",
-    },
+  devtool: 'cheap-module-source-map',
 
-    module: {
-        loaders: [
-            { 
-                test:  /\.js$/,
-                exclude: /node_modules/,
-                loaders: ["babel-loader"]
-            },
-            {
-                test: /\.html$/,
-                loader: "file?name=[name].[ext]"
-            }
-        ]
-    },
+  output: {
+    filename: 'app.js',
+    path: path.join(__dirname, './dist')
+  },
 
-    plugins: [
-        new webpack.DefinePlugin({
-            'process.env': {NODE_ENV: JSON.stringify('production')}
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        })
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loaders: ['babel-loader']
+      },
+      {
+        test: /\.html$/,
+        loader: 'file?name=[name].[ext]'
+      }
     ]
+  },
+
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {NODE_ENV: JSON.stringify('production')}
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
+  ]
 }

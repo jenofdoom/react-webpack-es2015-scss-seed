@@ -2,11 +2,13 @@
   "name": "react-webpack-es2015-scss-seed",
   "version": "1.0.0",
   "description": "A project seed using React, Webpack, Babel + ES2015 and scss",
+  "repository": "https://github.com/jenofdoom/react-webpack-es2015-scss-seed",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.prod.config.js --optimize-minimize --optimize-dedupe",
-    "start": "./node_modules/.bin/webpack-dev-server --quiet --hot --inline"
+    "start": "NODE_ENV=development ./node_modules/.bin/webpack-dev-server --quiet --hot --inline",
+    "lint": "./node_modules/.bin/standard"
   },
   "keywords": [
     "react",
@@ -16,21 +18,24 @@
     "es6",
     "es2015"
   ],
-  "author": "Jen Z",
+  "author": "Jen Zajac",
   "license": "MIT",
   "private": true,
   "devDependencies": {
     "babel-core": "~6.10.4",
+    "babel-eslint": "~6.1.2",
     "babel-loader": "~6.2.4",
     "babel-preset-es2015": "~6.9.0",
     "babel-preset-react": "~6.11.1",
     "file-loader": "~0.9.0",
+    "react": "~15.2.1",
+    "react-dom": "~15.2.1",
     "react-hot-loader": "~1.3.0",
+    "standard": "~7.1.2",
     "webpack": "~1.13.1",
     "webpack-dev-server": "~1.14.1"
   },
-  "dependencies": {
-    "react": "~15.2.1",
-    "react-dom": "~15.2.1"
+  "standard": {
+    "parser": "babel-eslint"
   }
 }

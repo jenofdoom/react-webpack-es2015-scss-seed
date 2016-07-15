@@ -1,8 +1,8 @@
-import ReactDOM from "react-dom"
-import React from "react"
-import Greeting from "./greeting"
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Greeting from './components/greeting/greeting'
 
 ReactDOM.render(
-    <Greeting name="World"/>,
-    document.getElementById("app")
+  <Greeting name='World' />,
+  document.getElementById('app')
 )
