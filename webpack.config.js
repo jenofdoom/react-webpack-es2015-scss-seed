@@ -1,4 +1,12 @@
+const autoprefixer = require('autoprefixer')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const path = require('path')
+
+const sassLoaders = [
+  'css-loader',
+  'postcss-loader',
+  'sass-loader?includePaths[]=' + path.resolve(__dirname, './src')
+]
 
 module.exports = {
   context: path.join(__dirname, './src'),
@@ -16,14 +24,34 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.js[x]?$/,
         exclude: /node_modules/,
-        loaders: ['react-hot', 'babel-loader']
+        loaders: ['babel-loader']
       },
       {
         test: /\.html$/,
         loader: 'file?name=[name].[ext]'
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!'))
       }
     ]
+  },
+
+  plugins: [
+    new ExtractTextPlugin('app.css')
+  ],
+
+  postcss: [
+    autoprefixer({
+      browsers: ['last 2 versions']
+    })
+  ],
+
+  // set up resolve so don't have to qualify paths with ./ within src
+  resolve: {
+    extensions: ['', '.js', '.jsx', '.scss'],
+    root: [path.join(__dirname, './src')]
   }
 }

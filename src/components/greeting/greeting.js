@@ -1,3 +1,5 @@
+import 'components/greeting/greeting.scss'
+
 import React from 'react'
 
 export default React.createClass({
