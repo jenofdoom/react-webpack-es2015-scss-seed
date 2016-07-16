@@ -6,8 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.prod.config.js --optimize-minimize --optimize-dedupe",
-    "start": "NODE_ENV=development ./node_modules/.bin/webpack-dev-server --quiet --hot --inline",
+    "build": "./node_modules/.bin/webpack --optimize-minimize --optimize-dedupe",
+    "start": "./node_modules/.bin/webpack-dev-server --quiet --hot --inline",
     "lint": "./node_modules/.bin/standard"
   },
   "keywords": [
@@ -39,7 +39,9 @@
     "standard": "~7.1.2",
     "style-loader": "~0.13.1",
     "webpack": "~1.13.1",
-    "webpack-dev-server": "~1.14.1"
+    "webpack-dev-server": "~1.14.1",
+    "webpack-merge": "~0.14.0",
+    "webpack-validator": "~2.2.3"
   },
   "standard": {
     "parser": "babel-eslint"
