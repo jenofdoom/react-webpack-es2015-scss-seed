@@ -1,4 +1,5 @@
 const autoprefixer = require('autoprefixer')
+const childProcess = require('child_process')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const merge = require('webpack-merge')
@@ -78,7 +79,8 @@ switch (process.env.npm_lifecycle_event) {
 
       plugins: [
         new webpack.DefinePlugin({
-          'process.env': {NODE_ENV: JSON.stringify('production')}
+          'process.env': {NODE_ENV: JSON.stringify('production')},
+          __VERSION__: childProcess.execSync('git rev-parse --short HEAD').toString()
         }),
         new webpack.optimize.UglifyJsPlugin({
           compress: {
