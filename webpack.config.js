@@ -1,9 +1,9 @@
 const autoprefixer = require('autoprefixer')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const merge = require('webpack-merge')
 const path = require('path')
 const webpack = require('webpack')
-const validate = require('webpack-validator')
 
 const sassLoaders = [
   'css-loader',
@@ -21,8 +21,7 @@ const common = {
   context: PATHS.src,
 
   entry: {
-    javascript: './index.js',
-    html: './index.html'
+    javascript: './index.js'
   },
 
   output: {
@@ -38,10 +37,6 @@ const common = {
         loaders: ['babel-loader']
       },
       {
-        test: /\.html$/,
-        loader: 'file?name=[name].[ext]'
-      },
-      {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!'))
       }
@@ -49,7 +44,11 @@ const common = {
   },
 
   plugins: [
-    new ExtractTextPlugin('app.css')
+    new ExtractTextPlugin('app.css'),
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      hash: true
+    })
   ],
 
   postcss: [
@@ -97,9 +96,9 @@ switch (process.env.npm_lifecycle_event) {
       plugins: [
         new webpack.DefinePlugin({
           'process.env': {NODE_ENV: JSON.stringify('development')}
-        }),
+        })
       ]
     })
 }
 
-module.exports = validate(config)
+module.exports = config
